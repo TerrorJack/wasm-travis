@@ -1,0 +1,22 @@
+language: generic
+
+git:
+  depth: 1
+
+matrix:
+  include:
+    - os: linux
+      sudo: false
+      dist: trusty
+      group: edge
+      addons:
+        apt:
+          sources:
+            - google-chrome
+            - ubuntu-toolchain-r-test
+          packages:
+            - google-chrome-unstable
+
+script:
+  - google-chrome-unstable --version
+  - google-chrome-unstable --headless --disable-gpu --dump-dom http://webassembly.org/demo/Tanks/
